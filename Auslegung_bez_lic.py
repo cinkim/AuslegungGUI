@@ -1,12 +1,10 @@
 
 import os
-from time import asctime
-from datetime import datetime
 
 import tkinter as tk
 from tkinter import ttk, StringVar
 from tkinter import LEFT, NO, DISABLED, NORMAL
-import tkinter.messagebox
+from tkinter import messagebox
 
 
 class Auslegung:
@@ -15,7 +13,7 @@ class Auslegung:
         self.odemceno = False
         self.uzivatel = Auslegung.odemknout(self)
         self.zaznamy = []
-        self.nazev_soubor2 = "D:\Python\Projekty_Python\Auslegung/auslegung2.txt"
+        self.nazev_soubor2 = "D:/Python/Projekty_Python/AuslegungGUI/auslegung2.txt"
         self.hledam_nuz = ""
         self.nalezeno = []
         self.kontrola = []
@@ -120,7 +118,7 @@ class AuslegungGUI(tk.Frame):
         self.frame_vyhledat.pack()
 
         self.cislo_noze = StringVar()
-        self.entry_cislo_noze = ttk.Entry(self.frame_vyhledat, width=20, textvariable=self.cislo_noze)
+        self.entry_cislo_noze = ttk.Entry(self.frame_vyhledat, width=20, textvariable=self.cislo_noze, justify="center")
         self.entry_cislo_noze.pack(side=LEFT)
 
 
@@ -139,37 +137,37 @@ class AuslegungGUI(tk.Frame):
         self.frame_zaznam.pack()
 
         self.cislo = StringVar()
-        self.entry_cislo = ttk.Entry(self.frame_zaznam, width=28, textvariable=self.cislo)
+        self.entry_cislo = ttk.Entry(self.frame_zaznam, width=28, textvariable=self.cislo, justify="center")
         self.entry_cislo.pack(side=LEFT)
 
 
         self.X = StringVar()
-        self.entry_X = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.X)
+        self.entry_X = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.X, justify="center")
         self.entry_X.pack(side=LEFT)
 
 
         self.Y = StringVar()
-        self.entry_Y = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.Y)
+        self.entry_Y = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.Y, justify="center")
         self.entry_Y.pack(side=LEFT)
 
 
         self.draha = StringVar()
-        self.entry_draha = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.draha)
+        self.entry_draha = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.draha, justify="center")
         self.entry_draha.pack(side=LEFT)
 
 
         self.vyseky = StringVar()
-        self.entry_vyseky = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.vyseky)
+        self.entry_vyseky = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.vyseky, justify="center")
         self.entry_vyseky.pack(side=LEFT)
 
 
         self.krizeni = StringVar()
-        self.entry_krizeni = ttk.Entry(self.frame_zaznam, width=32, textvariable=self.krizeni)
+        self.entry_krizeni = ttk.Entry(self.frame_zaznam, width=19, textvariable=self.krizeni, justify="center")
         self.entry_krizeni.pack(side=LEFT)
 
 
         self.poznamka = StringVar()
-        self.entry_poznamka = ttk.Entry(self.frame_zaznam, width=43, textvariable=self.poznamka)
+        self.entry_poznamka = ttk.Entry(self.frame_zaznam, width=56, textvariable=self.poznamka, justify="center")
         self.entry_poznamka.pack(side=LEFT)
 
 
@@ -180,36 +178,36 @@ class AuslegungGUI(tk.Frame):
         # Seznam zaznamu
         self.frame_seznam = tk.Frame()
         self.frame_seznam.pack()
-        self.tree_zaznamy = ttk.Treeview(self.frame_seznam, columns=("cislo", "X", "Y", "draha", "vyseky", "krizeni", "poznamka"), height=40)
+        self.tree_zaznamy = ttk.Treeview(self.frame_seznam, columns=("cislo", "X", "Y", "draha", "vyseky", "krizeni", "poznamka"), height=30)
 
         self.tree_zaznamy.heading("#0", text="#")
-        self.tree_zaznamy.column("#0", minwidth=0, width=50, stretch=NO)
+        self.tree_zaznamy.column("#0", minwidth=0, width=50, stretch=NO, anchor='center')
 
         self.tree_zaznamy.heading("cislo", text="Číslo")
-        self.tree_zaznamy.column("cislo", minwidth=0, width=120, stretch=NO)
+        self.tree_zaznamy.column("cislo", minwidth=0, width=120, stretch=NO, anchor='center')
 
         self.tree_zaznamy.heading("X", text="X")
-        self.tree_zaznamy.column("X", minwidth=0, width=120)
+        self.tree_zaznamy.column("X", minwidth=0, width=120, anchor='center')
         self.tree_zaznamy.pack()
 
         self.tree_zaznamy.heading("Y", text="Y")
-        self.tree_zaznamy.column("Y", minwidth=0, width=120)
+        self.tree_zaznamy.column("Y", minwidth=0, width=120, anchor='center')
         self.tree_zaznamy.pack()
 
         self.tree_zaznamy.heading("draha", text="Dráha")
-        self.tree_zaznamy.column("draha", minwidth=0, width=120)
+        self.tree_zaznamy.column("draha", minwidth=0, width=120, anchor='center')
         self.tree_zaznamy.pack()
 
         self.tree_zaznamy.heading("vyseky", text="Výseky")
-        self.tree_zaznamy.column("vyseky", minwidth=0, width=120)
+        self.tree_zaznamy.column("vyseky", minwidth=0, width=120, anchor='center')
         self.tree_zaznamy.pack()
 
         self.tree_zaznamy.heading("krizeni", text="Křížení")
-        self.tree_zaznamy.column("vyseky", minwidth=0, width=120)
+        self.tree_zaznamy.column("krizeni", minwidth=0, width=120, anchor='center')
         self.tree_zaznamy.pack()
 
         self.tree_zaznamy.heading("poznamka", text="Poznámka")
-        self.tree_zaznamy.column("poznamka", minwidth=0, width=450)
+        self.tree_zaznamy.column("poznamka", minwidth=0, width=530, anchor='center')
         self.tree_zaznamy.pack()
 
         # Tlačítka operací
@@ -224,11 +222,12 @@ class AuslegungGUI(tk.Frame):
         if self.auslegung.odemceno == True:
             if self.tree_zaznamy.focus():
                 index = int(self.tree_zaznamy.item(self.tree_zaznamy.focus())["text"])
-                self.auslegung.smaz(index)
-                self.auslegung.uloz(self.auslegung.nazev_soubor2)
-                self.zobraz()
+                if messagebox.askyesno("Smazat", f"Smazat záznam") == True:
+                    self.auslegung.smaz(index)
+                    self.auslegung.uloz(self.auslegung.nazev_soubor2)
+                    self.zobraz()
         else:
-            tk.messagebox.showwarning("Smazat", "Nemáš oprávnění.")
+            messagebox.showwarning("Smazat", "Nemáš oprávnění.")
 
 
     def nacti(self):
@@ -274,7 +273,7 @@ class AuslegungGUI(tk.Frame):
             self.zobraz()
 
         else:
-            tk.messagebox.showwarning("Přidej", "Nemáš oprávnění.")
+            messagebox.showwarning("Přidej", "Nemáš oprávnění.")
             self.cislo.set("")
             self.X.set("")
             self.Y.set("")
